@@ -6,7 +6,9 @@ import AuthContextProvider from "./Contexts/AuthContext";
 function App() {
   return (
     <div className={styles.root_div}>
+      <AuthContextProvider>
         <RouterProvider router={router}></RouterProvider>
+      </AuthContextProvider>
     </div>
   );
 }

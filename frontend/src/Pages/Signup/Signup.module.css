@@ -1,0 +1,90 @@
+.root_div
+{   
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.div_1
+{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #E6E6FA;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+}
+.form_box
+{   margin-top: 1rem;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+.input_label
+{   margin-top: 1rem;
+    font-size: 11pt;
+}
+.input_box
+{
+    height: 50px;
+    width: 100%;
+    background-color: white;
+    border-style: none;
+    border-width: 1px;
+    border-radius: 5px;
+    text-indent: 5px;
+    
+}
+.input_box:focus
+{
+    outline: none;
+    border: solid gray ; 
+}
+.dob
+{
+    width: 30%;
+    height: 50px;
+    border: gray;
+    border-radius: 5px;
+}
+.dob:focus
+{
+    outline: none;
+}
+.signup_button
+{
+    color: white;
+    font-size: 16pt;
+    height: 50px;
+    width: 50%;
+    background-color: rgb(43, 43, 205);
+    border-style: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.signup_button:hover
+{
+    background-color: rgb(71, 71, 220);
+}
+.div_last
+{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.link
+{
+    color: rgb(57, 116, 183);
+    text-decoration: none;
+    font-size: 10pt;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.link:hover{
+    text-decoration: underline;
+}
