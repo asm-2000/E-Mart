@@ -1,0 +1,91 @@
+.root_div
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #E6E6FA;
+    height: 80px;
+}
+.div_1
+{
+    height: 100%;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    
+}
+.search_form
+{
+    display: flex;
+    height: 100%;
+    width: 75%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    gap: 0.7rem;
+}
+.searchBar
+{
+    width: 70%;
+    height: 50%;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: gray;
+    background-color: rgb(255, 255, 255);
+    font-size: 12pt;
+    text-indent: 5%;
+}
+.searchButton
+{
+    height: 50%;
+    width: 40px;
+    border-style: none;
+    border-radius: 50%;
+    background: transparent;
+}
+.searchButton:hover
+{
+ background-color:rgb(222, 199, 243);
+}
+.div_2
+{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    gap: 1rem;
+}
+.links
+{
+    padding: 10px 10px;
+    text-decoration: none;
+    color: rgb(57,19,88);
+    font-size: 14pt;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+.links:hover{
+    background-color: rgb(222, 199, 243);
+}
+.cart
+{
+    padding: 8px 8px;
+    margin-right: 1rem;
+    border-radius: 50%;
+}
+.cart:hover
+{
+    background-color: rgb(222, 199, 243);
+    animation: cartAnimation 1s infinite;
+}
+
+@keyframes cartAnimation {
+    0%{transform: rotate(180deg);}
+    50%{transform: rotate(0deg);}
+    100%{transform: rotate(-180deg);}
+}
