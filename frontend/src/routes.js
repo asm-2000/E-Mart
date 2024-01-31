@@ -5,6 +5,8 @@ import Homepage from "./Pages/Homepage/Homepage";
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup";
 import Cart from "./Pages/Cart/Cart";
+import Product from "./Pages/Product/Product";
+import ProductDetail from "./Components/ProductDetail/ProductDetail";
 
 export const router = createBrowserRouter([
   {
@@ -13,9 +15,14 @@ export const router = createBrowserRouter([
     errorElement: <ErrorElement></ErrorElement>,
     children: [
       { index: true, element: <Homepage></Homepage> },
-      { path: "/mycart", element: <Cart></Cart> },
-      { path: "/login", element: <Login></Login> },
-      { path: "/signup", element: <Signup></Signup> },
+      {
+        path: "/productcategory/:productCategory",
+        element: <Product></Product>,
+      },
+      { path: "mycart", element: <Cart></Cart> },
+      { path: "products/:productID", element: <ProductDetail></ProductDetail> },
+      { path: "login", element: <Login></Login> },
+      { path: "signup", element: <Signup></Signup> },
     ],
   },
 ]);

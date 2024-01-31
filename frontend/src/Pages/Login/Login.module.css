@@ -49,6 +49,7 @@
   background-color: rgb(43, 43, 205);
   border-style: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 .login_button:hover {
   background-color: rgb(71, 71, 220);

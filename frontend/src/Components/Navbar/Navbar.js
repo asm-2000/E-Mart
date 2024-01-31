@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
-import cartIcon from "../../Assets/shopping-cart .png";
+import useAuth from "../../Hooks/useAuth";
+import cartIcon from "../../Assets/cart.png";
 import ecommerceIcon from "../../Assets/shopping-bag.png";
 import searchIcon from "../../Assets/search.png";
 
 function Navbar() {
   const [searchKey, setSearchKey] = useState("");
-
-  function searchKeychangeHandler(event)
-  {
+  const { isloggedin } = useAuth();
+  function searchKeychangeHandler(event) {
     event.preventDefault();
     setSearchKey(event.target.value);
   }
@@ -25,10 +25,7 @@ function Navbar() {
           <img src={ecommerceIcon} alt="Ecommerce icon" />
         </Link>
 
-        <form
-          onSubmit={searchHandler}
-          className={styles.search_form}
-        >
+        <form onSubmit={searchHandler} className={styles.search_form}>
           <input
             type="text"
             placeholder="Search for products.."
@@ -42,16 +39,19 @@ function Navbar() {
         </form>
       </div>
       <div className={styles.div_2}>
-        <Link
-          to="/mycart"
-          className={styles.cart}
-          style={{ padding: "6px 6px" }}
-        >
+        <Link to="/mycart" className={styles.cartIcon}>
           <img src={cartIcon} alt="cart icon" />
         </Link>
-        <Link to="/login" className={styles.links}>
-          Login
-        </Link>
+        {!isloggedin && (
+          <Link to="/login" className={styles.links}>
+            Login
+          </Link>
+        )}
+        {isloggedin && (
+          <Link to="/login" className={styles.links}>
+            Logout
+          </Link>
+        )}
         <Link to="/signup" className={styles.links}>
           Sign Up
         </Link>

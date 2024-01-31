@@ -8,7 +8,7 @@ function Signup() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [contact, setContact] =useState("");
+    const [number, setNumber] =useState("");
     const [dob, setDob ] = useState("");
     const {signupHandler} = useAuth();
 
@@ -24,13 +24,26 @@ function Signup() {
     {
         setPassword(event.target.value);
     }
-    function contactChangeHandler(event)
+    function numberChangeHandler(event)
     {
-        setContact(event.target.value);
+        setNumber(event.target.value);
     }
     function dobChangeHandler(event)
     {
         setDob(event.target.value);
+    }
+
+    function submitHandler()
+    {
+      const signupData = {
+        name: name,
+        email: email,
+        password: password,
+        number: number,
+        dob: dob
+
+      }
+      signupHandler(signupData)
     }
 
   return (
@@ -40,7 +53,7 @@ function Signup() {
           <h2>Create An E-Mart Account</h2>
           <img src={registerIcon} alt="login Icon" />
 
-          <form className={styles.form_box} onSubmit={signupHandler}>
+          <form className={styles.form_box} onSubmit={submitHandler}>
             <label htmlFor="name" className={styles.input_label}>
               Full Name
             </label>
@@ -84,8 +97,8 @@ function Signup() {
               type="tel"
               id="contact_number"
               className={styles.input_box}
-              value={contact}
-              onChange={contactChangeHandler}
+              value={number}
+              onChange={numberChangeHandler}
               placeholder="Enter Contact Number"
             />
             <label htmlFor="DOB" className={styles.input_label}>

@@ -1,0 +1,8 @@
+.root {
+  height: auto;
+  max-width: 100%;
+  align-items: center;
+}
+.root .page {
+  width: 100%;
+}

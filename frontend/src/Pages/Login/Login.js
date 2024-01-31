@@ -21,7 +21,7 @@ function Login() {
         // number of checks to be done (minimizes the number of requests)
         email.trim().includes("@") &&
         email.trim().length > 12 &&
-        password.trim().length > 6
+        password.trim().length >= 6
       )
         setFormValidity(true);
       else setFormValidity(false);
@@ -54,7 +54,6 @@ function Login() {
         email: email,
         password: password,
       };
-      console.log(loginInfo);
       setEmail("");
       setPassword("");
       loginHandler(loginInfo);

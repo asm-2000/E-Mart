@@ -1,5 +1,22 @@
 .root_div
 {
     height: fit-content;
-    width: 95%;
+    width: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    
 }
+.products{
+    display: flex;
+    flex-direction: column;
+}
+.productgrid
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    row-gap: 1em;
+}
+
