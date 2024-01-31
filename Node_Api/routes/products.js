@@ -12,6 +12,13 @@ router.get("/", (req, res, next) => {
     .catch((err) => res.status(500).json(err));
 });
 
+router.get("/:product_id", (req,res,next)=>{
+  const product_id = req.params['product_id']
+  Product.find({_id:product_id}).exec().then((data)=>{
+    res.status(200).json(data);
+  }).catch((err)=>res.status(500).json(err));
+})
+
 router.post("/", (req, res, next) => {
   const product = new Product({
     _id: new mongoose.Types.ObjectId(),
