@@ -27,8 +27,8 @@ function AuthContextProvider({ children }) {
     // }
   }
   function logoutHandler() {}
-  function signupHandler(signupData) {
-    fetch("http://localhost:8080/users/signup", {
+  async function signupHandler(signupData) {
+    const response = await fetch("http://localhost:8080/users/signup", {
       method: "POST",
       mode: "cors",
       headers: {
@@ -36,8 +36,16 @@ function AuthContextProvider({ children }) {
       },
       body: JSON.stringify(signupData),
     })
-      .then((result) => console.log(result))
-      .catch((err) => console.log("error signing up"));
+      if (response.status === 201)
+      {
+        const result = "Signed up successfully!";
+        return result;
+      }
+      else {
+        const result = "Another User exists with the provided email!";
+        return result;
+      }
+      
   }
   return (
     <AuthContext.Provider

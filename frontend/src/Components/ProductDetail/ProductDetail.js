@@ -1,47 +1,53 @@
 import { useParams } from "react-router-dom";
 import styles from "./ProductDetail.module.css";
-import demoImg from "../../Assets/shopping-bag.png";
-import cartImg from "../../Assets/cart.png";
+import { useEffect, useState } from "react";
 
 function ProductDetail() {
-  const productId = useParams();
+  const {productID} = useParams();
+  const [productDetail, setproductDetail] = useState({});
   function AddtocartHandler() {}
-  console.log(productId)
+  useEffect(() => {
+    async function fetchDetails() {
+      try {
+        console.log(productID)
+        const url = "http://localhost:8080/products/" + productID ;
+        console.log(url);
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+        setproductDetail(...data);
+      } catch {
+        const err = new Error("Failed to fetch product datails");
+      }
+    }
+    fetchDetails();
+  }, []);
   return (
     <div className={styles.div_root}>
       <div className={styles.div_1}>
-        <img src={demoImg} alt="" className={styles.div_image} />
+        <img
+          src={productDetail.img_link}
+          alt="Product"
+          className={styles.div_image}
+        />
 
         <div className={styles.div_utility}>
-          <div className={styles.title}>Dummy product</div>
-          <div className={styles.price}>Price: Rs 1000</div>
+          <div className={styles.title}>{productDetail.product_name}</div>
+          <div className={styles.price}>
+            Price: {productDetail.actual_price}
+          </div>
           <div className={styles.productDescription}>
             <span style={{ color: "black", fontSize: "12pt" }}>
               Product Description:
             </span>{" "}
             <br />
             <br />
-            The MacBook family was initially housed in designs similar to the
-            iBook and PowerBook lines which preceded them, now making use of a
-            unibody aluminum construction first introduced with the MacBook Air.
-            This new construction also has a black plastic keyboard that was
-            first used on the MacBook Air, which itself was inspired by the
-            sunken keyboard of the original polycarbonate MacBooks. The now
-            standardized keyboard brings congruity to the MacBook line, with
-            black keys on a metallic aluminum body. The lids of the MacBook
-            family are held closed by a magnet with no mechanical latch, a
-            design element first introduced with the polycarbonate MacBook. The
-            Memory, drives, and batteries were accessible in the old MacBook
-            lineup, though the newest compact lineup solders or glues all such
-            components in place. All of the current MacBooks feature backlit
-            keyboards.
+            {productDetail.about_product}
           </div>
           <button onClick={AddtocartHandler} className={styles.cartButton}>
             Add To Cart
           </button>
-          <button  className={styles.buyButton}>
-            Buy Now
-          </button>
+          <button className={styles.buyButton}>Buy Now</button>
         </div>
       </div>
     </div>

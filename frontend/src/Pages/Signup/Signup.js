@@ -1,54 +1,63 @@
 import React, { useState } from "react";
 import styles from "./Signup.module.css";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import registerIcon from "../../Assets/register.png";
 import useAuth from "../../Hooks/useAuth";
 
 function Signup() {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [number, setNumber] =useState("");
-    const [dob, setDob ] = useState("");
-    const {signupHandler} = useAuth();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [number, setNumber] = useState("");
+  const [dob, setDob] = useState("");
+  const [registerFlag, setregFlag] = useState(false);
+  const [result, setResult] = useState("");
+  const { signupHandler } = useAuth();
+  const navigate = useNavigate();
 
-    function nameChangeHandler(event)
-    {
-        setName(event.target.value);
-    }
-    function emailChangeHandler(event)
-    {
-        setEmail(event.target.value);
-    }
-    function passwordChangeHandler(event)
-    {
-        setPassword(event.target.value);
-    }
-    function numberChangeHandler(event)
-    {
-        setNumber(event.target.value);
-    }
-    function dobChangeHandler(event)
-    {
-        setDob(event.target.value);
-    }
+  function nameChangeHandler(event) {
+    setName(event.target.value);
+  }
+  function emailChangeHandler(event) {
+    setEmail(event.target.value);
+  }
+  function passwordChangeHandler(event) {
+    setPassword(event.target.value);
+  }
+  function numberChangeHandler(event) {
+    setNumber(event.target.value);
+  }
+  function dobChangeHandler(event) {
+    setDob(event.target.value);
+  }
 
-    function submitHandler()
-    {
-      const signupData = {
-        name: name,
-        email: email,
-        password: password,
-        number: number,
-        dob: dob
-
-      }
-      signupHandler(signupData)
-    }
+  function submitHandler(event) {
+    event.preventDefault();
+    const signupData = {
+      name: name,
+      email: email,
+      password: password,
+      number: number,
+      dob: dob,
+    };
+    signupHandler(signupData).then((result) => {
+      setregFlag(true);
+      setResult(result);
+      setTimeout(()=>{
+        navigate('/');
+      },"2000");
+      setEmail("");
+      setDob("");
+      setName("");
+      setNumber("");
+      setPassword("");
+    });
+  }
 
   return (
     <>
       <div className={styles.root_div}>
+        {registerFlag && <div className={styles.message}>{result}</div>}
         <div className={styles.div_1}>
           <h2>Create An E-Mart Account</h2>
           <img src={registerIcon} alt="login Icon" />
@@ -112,9 +121,9 @@ function Signup() {
                 value={dob}
                 onChange={dobChangeHandler}
               />
-               <button type="submit" className={styles.signup_button}>
-              Sign Up
-            </button>
+              <button type="submit" className={styles.signup_button}>
+                Sign Up
+              </button>
             </div>
           </form>
           <Link to="/login" className={styles.link}>
