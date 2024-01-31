@@ -4,7 +4,9 @@ const morgan = require('morgan');
 const cors = require('cors');
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/",{useMongoClient: true});
+mongoose.connect("mongodb://0.0.0.0/E-Mart").then(()=>{
+    console.log("database connected..")
+});
 
 const userRoute = require('./routes/users');
 const productRoutes = require('./routes/products');
