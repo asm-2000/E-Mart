@@ -38,11 +38,17 @@ function AuthContextProvider({ children }) {
     })
       if (response.status === 201)
       {
-        const result = "Signed up successfully!";
+        const result ={
+          msg:"Sign up successful!",
+          url:'/'
+        }
         return result;
       }
       else {
-        const result = "Another User exists with the provided email!";
+        const result = {
+          msg: "Another User exists with the provided email!",
+          url: '/signup'
+        }
         return result;
       }
       

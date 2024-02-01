@@ -42,15 +42,10 @@ function Signup() {
     };
     signupHandler(signupData).then((result) => {
       setregFlag(true);
-      setResult(result);
+      setResult(result.msg);
       setTimeout(()=>{
-        navigate('/');
+        navigate(result.url);
       },"2000");
-      setEmail("");
-      setDob("");
-      setName("");
-      setNumber("");
-      setPassword("");
     });
   }
 
@@ -73,6 +68,7 @@ function Signup() {
               value={name}
               onChange={nameChangeHandler}
               placeholder="Enter Your Full Name"
+              required
             />
 
             <label htmlFor="email" className={styles.input_label}>
@@ -85,6 +81,7 @@ function Signup() {
               value={email}
               onChange={emailChangeHandler}
               placeholder="Enter Your E-mail."
+              required
             />
 
             <label htmlFor="password" className={styles.input_label}>
@@ -97,6 +94,7 @@ function Signup() {
               value={password}
               onChange={passwordChangeHandler}
               placeholder="Enter Your Password"
+              required
             />
 
             <label htmlFor="contact_number" className={styles.input_label}>
@@ -109,6 +107,7 @@ function Signup() {
               value={number}
               onChange={numberChangeHandler}
               placeholder="Enter Contact Number"
+              required
             />
             <label htmlFor="DOB" className={styles.input_label}>
               Date Of Birth
@@ -120,6 +119,7 @@ function Signup() {
                 className={styles.dob}
                 value={dob}
                 onChange={dobChangeHandler}
+                required
               />
               <button type="submit" className={styles.signup_button}>
                 Sign Up

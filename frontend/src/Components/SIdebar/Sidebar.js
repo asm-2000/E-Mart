@@ -25,6 +25,9 @@ function Sidebar() {
       <Link to="/productcategory/homeApp" className={styles.classLinks}>
         Home Appliances
       </Link>
+      <Link to="/productcategory/Electronics" className={styles.classLinks}>
+        Electronics
+      </Link>
       <Link to="/productcategory/babygarment" className={styles.classLinks}>
         Grocery Items
       </Link>

@@ -4,7 +4,8 @@ const router = express.Router();
 const Product = require("../models/productModel");
 
 router.get("/", (req, res, next) => {
-  Product.find().limit(15)
+  Product.find()
+    .limit(15)
     .exec()
     .then((data) => {
       res.status(200).json(data);
@@ -12,12 +13,24 @@ router.get("/", (req, res, next) => {
     .catch((err) => res.status(500).json(err));
 });
 
-router.get("/:product_id", (req,res,next)=>{
-  const product_id = req.params['product_id']
-  Product.find({_id:product_id}).exec().then((data)=>{
-    res.status(200).json(data);
-  }).catch((err)=>res.status(500).json(err));
-})
+router.get("/:product_id", (req, res, next) => {
+  const product_id = req.params["product_id"];
+  Product.find({ _id: product_id })
+    .exec()
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => res.status(500).json(err));
+});
+router.get("/productcategories/:category", (req, res) => {
+  const category = req.params;
+  try {
+    const productlist = Product.find({ $text: { $search: "Electronics" } }).exec();
+    res.status(200).json(productlist);
+  } catch {
+    res.status(500);
+  }
+});
 
 router.post("/", (req, res, next) => {
   const product = new Product({
