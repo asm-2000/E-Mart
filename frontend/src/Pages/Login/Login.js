@@ -57,7 +57,7 @@ function Login() {
       setEmail("");
       setPassword("");
       loginHandler(loginInfo);
-    } else console.log("the email or password is not valid");
+    } else alert("The email or password is not valid");
   }
   if (isloggedin === true) {
     navigate("/");

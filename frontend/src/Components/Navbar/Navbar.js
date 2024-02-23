@@ -10,7 +10,6 @@ function Navbar() {
   const [searchKey, setSearchKey] = useState("");
   const { isloggedin } = useAuth();
   function searchKeychangeHandler(event) {
-    event.preventDefault();
     setSearchKey(event.target.value);
   }
   function searchHandler(event) {
@@ -41,6 +40,9 @@ function Navbar() {
       <div className={styles.div_2}>
         <Link to="/mycart" className={styles.cartIcon}>
           <img src={cartIcon} alt="cart icon" />
+        </Link>
+        <Link to="/myorders" className={styles.links}>
+          My orders
         </Link>
         {!isloggedin && (
           <Link to="/login" className={styles.links}>

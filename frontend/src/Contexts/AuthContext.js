@@ -18,15 +18,19 @@ function AuthContextProvider({ children }) {
         "content-type": "application/json",
       },
       body: JSON.stringify(loginData),
-    }).then((res) => {res.json();
-    console.log(res)});
-    console.log(authdata)
+    }).then((res) => {
+      res.json();
+      console.log(res);
+    });
+    console.log(authdata);
 
     // if (token === true) {
     //   setLoginStatus(true);
     // }
   }
+
   function logoutHandler() {}
+
   async function signupHandler(signupData) {
     const response = await fetch("http://localhost:8080/users/signup", {
       method: "POST",
@@ -35,23 +39,18 @@ function AuthContextProvider({ children }) {
         "content-type": "application/json",
       },
       body: JSON.stringify(signupData),
-    })
-      if (response.status === 201)
-      {
-        const result ={
-          msg:"Sign up successful!",
-          url:'/'
-        }
-        return result;
-      }
-      else {
-        const result = {
-          msg: "Another User exists with the provided email!",
-          url: '/signup'
-        }
-        return result;
-      }
-      
+    });
+    if (response.status === 201) {
+      const result = {
+        msg: "Sign up successful!",
+      };
+      return result;
+    } else {
+      const result = {
+        msg: "Another User exists with the provided email!",
+      };
+      return result;
+    }
   }
   return (
     <AuthContext.Provider

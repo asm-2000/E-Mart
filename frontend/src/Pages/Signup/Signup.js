@@ -10,10 +10,8 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [number, setNumber] = useState("");
   const [dob, setDob] = useState("");
-  const [registerFlag, setregFlag] = useState(false);
   const [result, setResult] = useState("");
   const { signupHandler } = useAuth();
-  const navigate = useNavigate();
 
   function nameChangeHandler(event) {
     setName(event.target.value);
@@ -41,18 +39,23 @@ function Signup() {
       dob: dob,
     };
     signupHandler(signupData).then((result) => {
-      setregFlag(true);
       setResult(result.msg);
       setTimeout(()=>{
-        navigate(result.url);
+        // redirect(`/${result.url}`, {replace:true});
+        setResult("");
       },"2000");
     });
+    setName("");
+    setEmail("");
+    setPassword("");
+    setNumber("");
+    setDob("");
   }
 
   return (
     <>
       <div className={styles.root_div}>
-        {registerFlag && <div className={styles.message}>{result}</div>}
+        {result && <div className={styles.message}>{result}</div>}
         <div className={styles.div_1}>
           <h2>Create An E-Mart Account</h2>
           <img src={registerIcon} alt="login Icon" />

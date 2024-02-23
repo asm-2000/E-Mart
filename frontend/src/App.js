@@ -1,4 +1,3 @@
-import styles from "./App.module.css";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routes";
 import AuthContextProvider from "./Contexts/AuthContext";

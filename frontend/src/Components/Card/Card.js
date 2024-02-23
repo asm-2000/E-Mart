@@ -10,7 +10,7 @@ function Card(props) {
       <div className={styles.card}>
         <img src={product.img_link} alt="product image" className={styles.image}/>
         <div className={styles.title}>{product.product_name}</div>
-        <div className={styles.price}>{product.actual_price}</div>
+        <div className={styles.price}> Rs {product.actual_price.substring(1,)}</div>
       </div>
     </Link>
   );

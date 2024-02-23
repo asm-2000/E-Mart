@@ -23,7 +23,7 @@
 }
 .div_utility {
   height: 100%;
-  width: 30%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -79,6 +79,13 @@
   text-align: center;
  justify-content: center;
   margin-bottom: 1em;
+}
+.incdecbutton
+{
+  background-color: transparent;
+  border-color: lightgray;
+  border-style: solid 1px;
+  border-radius: 3px;
 }
 .buyButton:hover{
   background-color: rgb(232, 150, 84);
